@@ -10,14 +10,19 @@ public class Player {
     private @Id
     @GeneratedValue long id;
     private String playerName;
-    private String playerTeam;
+    private int playerAge;
+    private int playerNumber;
+    private long playerBirthDate;
+
 
     public Player() {
     }
 
-    public Player(String playerName, String playerTeam) {
+    public Player(String playerName, int playerAge, int playerNumber, long playerBirthDate) {
         this.playerName = playerName;
-        this.playerTeam = playerTeam;
+        this.playerAge = playerAge;
+        this.playerNumber = playerNumber;
+        this.playerBirthDate = playerBirthDate;
     }
 
     public long getId() {
@@ -36,12 +41,42 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public String getPlayerTeam() {
-        return playerTeam;
+    public int getPlayerAge() {
+        return playerAge;
     }
 
-    public void setPlayerTeam(String playerTeam) {
-        this.playerTeam = playerTeam;
+    public void setPlayerAge(int playerAge) {
+        this.playerAge = playerAge;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public long getPlayerBirthDate() {
+        return playerBirthDate;
+    }
+
+    public void setPlayerBirthDate(long playerBirthDate) {
+        this.playerBirthDate = playerBirthDate;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return id == player.id && playerAge == player.playerAge && playerNumber == player.playerNumber && playerBirthDate == player.playerBirthDate && Objects.equals(playerName, player.playerName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, playerName, playerAge, playerNumber, playerBirthDate);
     }
 
     @Override
@@ -49,20 +84,12 @@ public class Player {
         return "Player{" +
                 "id=" + id +
                 ", playerName='" + playerName + '\'' +
-                ", playerTeam='" + playerTeam + '\'' +
+                ", playerAge=" + playerAge +
+                ", playerNumber=" + playerNumber +
+                ", playerBirthDate=" + playerBirthDate +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return id == player.id && playerName.equals(player.playerName) && playerTeam.equals(player.playerTeam);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, playerName, playerTeam);
-    }
 }
+
+
+

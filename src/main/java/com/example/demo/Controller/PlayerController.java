@@ -46,7 +46,9 @@ public class PlayerController {
         return playerRepository.findById(id)
                 .map(player -> {
                     player.setPlayerName(newPlayer.getPlayerName());
-                    player.setPlayerTeam(newPlayer.getPlayerTeam());
+                    player.setPlayerAge(newPlayer.getPlayerAge());
+                    player.setPlayerNumber(newPlayer.getPlayerNumber());
+                    player.setPlayerBirthDate(newPlayer.getPlayerBirthDate());
                     return playerRepository.save(player);
                 })
                 .orElseGet(() -> {
