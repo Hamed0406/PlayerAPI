@@ -20,27 +20,36 @@ public class PlayerController {
 
     // Aggregate root
     // tag::get-aggregate-root[]
+
     @GetMapping("/players")
+    @CrossOrigin()
+
     List<Player> all() {
         return playerRepository.findAll();
     }
     // end::get-aggregate-root[]
+    @CrossOrigin()
 
     @PostMapping("/players")
+
     Player newPlayer(@RequestBody Player newPlayer) {
         return playerRepository.save(newPlayer);
     }
 
     // Single item
+    @CrossOrigin()
 
     @GetMapping("/players/{id}")
+
     Player one(@PathVariable Long id) {
 
         return playerRepository.findById(id)
                 .orElseThrow(() -> new PlayerNotFoundException(id));
     }
+    @CrossOrigin()
 
     @PutMapping("/players/{id}")
+
     Player replacePlayer(@RequestBody Player newPlayer, @PathVariable Long id) {
 
         return playerRepository.findById(id)
@@ -56,8 +65,10 @@ public class PlayerController {
                     return playerRepository.save(newPlayer);
                 });
     }
+    @CrossOrigin()
 
     @DeleteMapping("/players/{id}")
+
     void deletePlayer(@PathVariable Long id) {
         playerRepository.deleteById(id);
     }

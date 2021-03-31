@@ -14,13 +14,13 @@ public class LoadDatabase {
 
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
-    @Bean
+   /* @Bean
     CommandLineRunner initDatabase(PlayerRepository repository) {
 
         return args -> {
             log.info("Preloading " + repository.save(new Player("test", 30,10,1987)));
             log.info("Preloading " + repository.save(new Player("test2", 45,15,1999)));
         };
-    }
+    }*/
 
 }
