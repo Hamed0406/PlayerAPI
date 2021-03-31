@@ -65,9 +65,9 @@ public class PlayerController {
                     return playerRepository.save(newPlayer);
                 });
     }
-    @CrossOrigin()
 
     @DeleteMapping("/players/{id}")
+    @CrossOrigin()
 
     void deletePlayer(@PathVariable Long id) {
         playerRepository.deleteById(id);

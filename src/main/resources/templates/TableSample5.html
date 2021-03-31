@@ -311,25 +311,29 @@
 
       function updateCancelClick() {
           productList();
+
       }
 
     // Delete product from <table>
     function productDelete(ctl) {
         var id = $(ctl).data("id");
 
-        alert('Vi i struntar i DELETE men ungefärlig kod i HTML-filen...');
+      //  alert('Vi i struntar i DELETE men ungefärlig kod i HTML-filen...');
 
       //// Call Web API to delete a product
-      //$.ajax({
-      //  url: "/api/Product/" + id,
-      //  type: 'DELETE',
-      //  success: function (product) {
-      //    $(ctl).parents("tr").remove();
-      //  },
-      //  error: function (request, message, error) {
-      //    handleException(request, message, error);
-      //  }
-      //});
+      $.ajax({
+        url: "/api/players/" + id,
+        type: 'DELETE',
+          contentType: "application/json;charset=utf-8",
+          dataType: 'json',
+
+          success: function (product) {
+         $(ctl).parents("tr").remove();
+        },
+        error: function (request, message, error) {
+          handleException(request, message, error);
+        }
+      });
     }
 
 
